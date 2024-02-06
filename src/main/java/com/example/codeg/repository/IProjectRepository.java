@@ -1,6 +1,6 @@
-package com.example.jspdemo.repository;
+package com.example.codeg.repository;
 
-import com.example.jspdemo.model.Project;
+import com.example.codeg.model.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IProjectRepository extends JpaRepository<Project, Long> {

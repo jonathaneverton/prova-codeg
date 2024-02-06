@@ -1,4 +1,6 @@
-package com.example.jspdemo.model;
+package com.example.codeg.model;
+
+import com.example.codeg.PersonDTO;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,6 +28,17 @@ public class Person {
     @Column
     private Boolean gerente;
 
+    public Person() {
+
+    }
+
+    public Person(PersonDTO personDTO) {
+        this.nome = personDTO.nome();
+        this.cpf = personDTO.cpf();
+        this.dataNascimento = personDTO.dataNascimento();
+        this.gerente = personDTO.gerente();
+        this.funcionario = personDTO.funcionario();
+    }
     public Long getId() {
         return id;
     }

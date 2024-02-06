@@ -1,4 +1,4 @@
-package com.example.jspdemo.model;
+package com.example.codeg.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;

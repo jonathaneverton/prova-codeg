@@ -1,7 +1,7 @@
-package com.example.jspdemo.controller;
+package com.example.codeg.controller;
 
-import com.example.jspdemo.model.Person;
-import com.example.jspdemo.service.PersonService;
+import com.example.codeg.model.Person;
+import com.example.codeg.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

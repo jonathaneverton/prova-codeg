@@ -1,7 +1,7 @@
-package com.example.jspdemo.service;
+package com.example.codeg.service;
 
-import com.example.jspdemo.model.Person;
-import com.example.jspdemo.repository.IPersonRepository;
+import com.example.codeg.model.Person;
+import com.example.codeg.repository.IPersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
