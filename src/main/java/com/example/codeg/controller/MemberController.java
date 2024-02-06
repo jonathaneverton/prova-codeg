@@ -2,8 +2,10 @@ package com.example.codeg.controller;
 
 import com.example.codeg.dto.MemberDTO;
 import com.example.codeg.model.Member;
+import com.example.codeg.model.Person;
 import com.example.codeg.model.Project;
 import com.example.codeg.service.MemberService;
+import com.example.codeg.service.PersonService;
 import com.example.codeg.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,9 @@ public class MemberController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private PersonService personService;
+
     @GetMapping
     public ResponseEntity getAllMembers() {
         List<Member> memberList = service.getAllMembers();
@@ -39,8 +44,13 @@ public class MemberController {
 
     @PostMapping()
     public ResponseEntity addMember(@RequestBody Member data) {
-        Member newMember = service.saveMember(data);
-        return new ResponseEntity<>(newMember, HttpStatus.CREATED);
+        Person person = personService.getPersonById(data.getPessoa().getId());
+        if (person.getFuncionario()) {
+            Member newMember = service.saveMember(data);
+            return new ResponseEntity<>(newMember, HttpStatus.CREATED);
+        }
+
+        return new ResponseEntity<>(data, HttpStatus.NOT_ACCEPTABLE);
     }
 
     @DeleteMapping("/{id}")
