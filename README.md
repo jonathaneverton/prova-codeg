@@ -88,7 +88,7 @@ $ git clone https://github.com/jonathaneverton/prova-codeg.git
   + em andamento
   + encerrado
   + cancelado
-+ Se um projeto foi mudado o status para iniciado, em andamento ou encerrado não pode
++ Se um projeto foi mudado o status para *iniciado, em andamento ou encerrado* não pode
   mais ser excluído
 + O sistema não deve permitir o cadastro de um novo membro diretamente. Deve ser
   provida funcionalidade via web service, contendo nome e atribuição (cargo)
