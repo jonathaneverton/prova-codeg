@@ -1,8 +1,11 @@
 package com.example.codeg.service;
 
+import com.example.codeg.exceptions.CustomException;
 import com.example.codeg.model.Person;
 import com.example.codeg.repository.IPersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,9 +17,18 @@ public class PersonService {
     @Autowired
     private IPersonRepository repository;
 
+//    public List<Person> getAllPerson() {
+//        List<Person> personList = new ArrayList<>();
+//        repository.findAll().forEach(person -> personList.add(person));
+//
+//        return personList;
+//    }
+
     public List<Person> getAllPerson() {
         List<Person> personList = new ArrayList<>();
-        repository.findAll().forEach(person -> personList.add(person));
+
+        // Ordena por nome em ordem crescente
+        repository.findAll(Sort.by(Sort.Order.asc("nome"))).forEach(personList::add);
 
         return personList;
     }
@@ -36,7 +48,11 @@ public class PersonService {
     }
 
     public boolean deletePerson(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e){
+            throw new CustomException("Não é possível excluir a pessoa devido a alguma condição específica.");
+        }
 
         return repository.findById(id).isPresent();
     }

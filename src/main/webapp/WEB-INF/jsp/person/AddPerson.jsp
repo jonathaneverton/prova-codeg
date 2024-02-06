@@ -95,7 +95,13 @@
             	<div class="col-md-2">
             		<button type="submit" value="Register" class="btn btn-success">Salvar</button>
             	</div>
+
+                <div class="col-md-2">
+                    <a href="<%= request.getHeader("Referer") %>" class="btn btn-primary">Voltar</a>
+                </div>
             </div>
+
+
 
         </form:form>
 

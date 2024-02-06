@@ -1,14 +1,14 @@
 package com.example.codeg.controller;
 
+import com.example.codeg.exceptions.CustomException;
 import com.example.codeg.model.Person;
 import com.example.codeg.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -64,13 +64,23 @@ public class PersonController {
 
     @GetMapping("/deletePerson/{id}")
     public String deletePerson(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        if (service.deletePerson(id)) {
-            redirectAttributes.addFlashAttribute("message", "Delete Success");
-        } else {
+        try {
+            if(service.deletePerson(id)) {
+                redirectAttributes.addFlashAttribute("message", "Delete Success");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Delete Failure");
+            }
+        } catch (CustomException e) {
             redirectAttributes.addFlashAttribute("message", "Delete Failure");
         }
 
+
         return "redirect:/viewPersonList";
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleCustomException(CustomException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
 }
