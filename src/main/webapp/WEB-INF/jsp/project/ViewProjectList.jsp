@@ -87,6 +87,10 @@
         	<a href="/addProject">Adicionar</a>
         </button>
 
+		<button type="button" class="btn btn-dark btn-block">
+			<a href="/index.jsp">Voltar</a>
+		</button>
+
     </div>
 
     <script th:inline="javascript">

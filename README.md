@@ -96,6 +96,10 @@ $ git clone https://github.com/jonathaneverton/prova-codeg.git
 
 ---
 ### URLs
+### Home
+```
+http://localhost:8080/index.jsp
+```
 ### Pessoa
 ```
 - http://localhost:8080/viewPersonList
