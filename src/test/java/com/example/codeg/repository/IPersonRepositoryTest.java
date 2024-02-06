@@ -1,6 +1,6 @@
 package com.example.codeg.repository;
 
-import com.example.codeg.PersonDTO;
+import com.example.codeg.dto.PersonDTO;
 import com.example.codeg.model.Person;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,10 +12,8 @@ import static org.assertj.core.api.Assertions.*;
 import javax.persistence.EntityManager;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @ActiveProfiles("test")
 class IPersonRepositoryTest {

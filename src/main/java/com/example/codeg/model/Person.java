@@ -1,11 +1,10 @@
 package com.example.codeg.model;
 
-import com.example.codeg.PersonDTO;
+import com.example.codeg.dto.PersonDTO;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name="PESSOA")
