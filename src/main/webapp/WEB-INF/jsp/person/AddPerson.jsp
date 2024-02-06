@@ -1,26 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <title>Adicionar Pessoa</title>
 
-    <link rel="stylesheet"
-    	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script
-    	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-    	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd-mm-yy', // Formato da data
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -42,6 +50,15 @@
             </div>
 
             <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="dataNascimento">Aniversário</label>
+                    <div class="col-md-6">
+                        <form:input type="text" id="dataNascimento" path="dataNascimento" name="dataNascimento" class="datepicker" required="required" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
             	<div class="form-group col-md-12">
             		<label class="col-md-3" for="cpf">CPF</label>
             		<div class="col-md-6">
@@ -54,7 +71,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <div class="form-group">
-                        <label for="funcionario">Funcion�rio</label>
+                        <label for="funcionario">Funcionário</label>
                         <div class="form-check">
                             <form:checkbox path="funcionario" id="funcionario" class="form-check-input"/>
                             <label class="form-check-label" for="funcionario">Ativo</label>

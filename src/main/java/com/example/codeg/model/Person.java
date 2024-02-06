@@ -1,8 +1,10 @@
 package com.example.codeg.model;
 
 import com.example.codeg.PersonDTO;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,19 +15,15 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String nome;
 
-    @Column
-    private Date dataNascimento;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dataNascimento;
 
-    @Column
     private String cpf;
 
-    @Column
     private Boolean funcionario;
 
-    @Column
     private Boolean gerente;
 
     public Person() {
@@ -55,11 +53,11 @@ public class Person {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

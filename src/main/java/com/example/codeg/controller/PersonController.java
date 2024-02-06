@@ -18,19 +18,19 @@ public class PersonController {
     PersonService service;
 
     @GetMapping({"/", "/viewPersonList"})
-    public String viewList(@ModelAttribute("message") String message, Model model) {
+    public String viewPersonList(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("personList", service.getAllPerson());
         model.addAttribute("message", message);
 
-        return "ViewPersonList";
+        return "person/ViewPersonList";
     }
 
     @GetMapping("/addPerson")
-    public String add(@ModelAttribute("message") String message, Model model) {
+    public String addPerson(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("message", message);
 
-        return "AddPerson";
+        return "person/AddPerson";
     }
 
     @PostMapping("/savePerson")
@@ -45,14 +45,14 @@ public class PersonController {
     }
 
     @GetMapping("/editPerson/{id}")
-    public String edit(@PathVariable Long id, Model model) {
+    public String editPerson(@PathVariable Long id, Model model) {
         model.addAttribute("person", service.getPersonById(id));
 
-        return "EditPerson";
+        return "person/EditPerson";
     }
 
     @PostMapping("/editSavePerson")
-    public String editSave(Person person, RedirectAttributes redirectAttributes) {
+    public String editSavePerson(Person person, RedirectAttributes redirectAttributes) {
         if (service.saveOrUpdatePerson(person)) {
             redirectAttributes.addFlashAttribute("message", "Edit Success");
             return "redirect:/viewPersonList";

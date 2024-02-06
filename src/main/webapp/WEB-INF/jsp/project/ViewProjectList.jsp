@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Lista de Pessoas</title>
+    <meta charset="UTF-8">
+    <title>Lista de Projetos</title>
 
     <link rel="stylesheet"
         	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 
     <div class="container">
 
-        <h1 class="p-3">Lista de Pessoas</h1>
+        <h1 class="p-3">Lista de Projetos</h1>
 
         <form:form>
 
@@ -44,30 +44,36 @@
 				<tr>
             		<th>Id</th>
             		<th>Nome</th>
-            		<th>Data de Nascimento</th>
-					<th>CPF</th>
-					<th>Funcion�rio</th>
-					<th>Gerente</th>
+            		<th>Data Início</th>
+					<th>Previsão de Término</th>
+					<th>Data Final</th>
+					<th>Descriçao</th>
+					<th>Status</th>
+					<th>Orçamento</th>
+					<th>Risco</th>
             		<th>Editar</th>
             		<th>Apagar</th>
             	</tr>
 
-            	<c:forEach var="person" items="${personList}">
+            	<c:forEach var="project" items="${projectList}">
                     <tr>
-                		<td>${person.id}</td>
-                		<td>${person.nome}</td>
-                		<td>${person.dataNascimento}</td>
-						<td>${person.cpf}</td>
-						<td>${person.funcionario}</td>
-						<td>${person.gerente}</td>
+                		<td>${project.id}</td>
+                		<td>${project.nome}</td>
+                		<td>${project.dataInicio}</td>
+						<td>${project.dataPrevisaoFim}</td>
+						<td>${project.dataFim}</td>
+						<td>${project.descricao}</td>
+						<td>${project.status}</td>
+						<td>${project.orcamento}</td>
+						<td>${project.risco}</td>
                 		<td>
 							<button type="button" class="btn btn-success">
-                		    	<a href="/editPerson/${person.id}">Editar</a>
+                		    	<a href="/editProject/${project.id}">Editar</a>
                 			</button>
 						</td>
                 		<td>
 							<button type="button" class="btn btn-danger">
-                				<a href="/deletePerson/${person.id}">Apagar</a>
+                				<a href="/deleteProject/${project.id}">Apagar</a>
                 			</button>
 						</td>
                 	</tr>
@@ -78,7 +84,7 @@
         </form:form>
 
         <button type="button" class="btn btn-primary btn-block">
-        	<a href="/addPerson">Adicionar</a>
+        	<a href="/addProject">Adicionar</a>
         </button>
 
     </div>
@@ -89,13 +95,13 @@
                     var msg = "${message}";
                     console.log(msg);
                     if (msg == "Save Success") {
-        				Command: toastr["success"](" added successfully!!")
+        				Command: toastr["success"]("Salvo com sucesso!!")
         			} else if (msg == "Delete Success") {
-        				Command: toastr["success"](" deleted successfully!!")
+        				Command: toastr["success"]("Apagado com sucesso!!")
         			} else if (msg == "Delete Failure") {
-        			    Command: toastr["error"]("Some error occurred, couldn't delete user")
+        			    Command: toastr["error"]("Ocorreu algum erro, não foi possível excluir registro")
         			} else if (msg == "Edit Success") {
-        				Command: toastr["success"](" updated successfully!!")
+        				Command: toastr["success"]("Atualizado com sucesso!!")
         			}
 
         			toastr.options = {

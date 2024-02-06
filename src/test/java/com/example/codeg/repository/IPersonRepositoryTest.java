@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ class IPersonRepositoryTest {
     @DisplayName("Buscar Pessoa com sucesso do DB")
     void findPersonCase1() {
         String doc = "111.111.111-11";
-        PersonDTO data = new PersonDTO("teste", new Date(2024, 1, 1), "111.111.111-11", true, false);
+        PersonDTO data = new PersonDTO("teste", LocalDate.now(), "111.111.111-11", true, false);
         this.createPerson(data);
 
         Optional<Person> result = this.repository.findPersonByCpf(doc);
@@ -41,7 +42,7 @@ class IPersonRepositoryTest {
     @DisplayName("Buscar Pessoa com sucesso do DB e não encontrar")
     void findPersonCase2() {
         String doc = "111.111.111-12";
-        PersonDTO data = new PersonDTO("teste", new Date(2024, 1, 1), "111.111.111-11", true, false);
+        PersonDTO data = new PersonDTO("teste", LocalDate.now(), "111.111.111-11", true, false);
         this.createPerson(data);
 
         Optional<Person> result = this.repository.findPersonByCpf(doc);
