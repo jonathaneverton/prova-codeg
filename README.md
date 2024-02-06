@@ -1,9 +1,12 @@
 <h1 align="center"> -----> Prova CODE G <----- </h1>
 
+![Link](./assets/linkedin.png) [Jonathan Everton](https://www.linkedin.com/in/jonathan-everton/)
+
 # Índice
 * [Descritivo](#Descritivo)
 * [Configurações](#Configurações)
 * [Funcionalidades](#Funcionalidades)
+* [Regras de Negócio](#Regras-de-Negócio)
 * [URLs](#URLs)
 * [Autor](#Autor)
 
@@ -59,6 +62,37 @@ $ git clone https://github.com/jonathaneverton/prova-codeg.git
 - `Funcionalidade 13`: Associar membro a um projeto (web-service)
 - `Funcionalidade 14`: Excluir membro de um projeto (web-service)
 - `Funcionalidade 15`: Listar membros de um projeto (web-service)
+
+---
+### Regras de Negócio
++ Permitir o CRUD de Projetos
++ Para cada Projeto devem ser informados 
+  + nome
+  + data de início
+  + gerente responsável 
+  + previsão de término
+  + data real de término
+  + orçamento total
+  + descrição
+  + status
++ Os projetos devem ser classificados em: *baixo risco, médio risco e alto risco*. A
+    classificação de risco não é cadastrada no sistema.
++ A cada instante, o projeto deve estar em um status específico e único. Os status
+  possíveis não são cadastrados no sistema e são: 
+  + em análise
+  + análise realizada
+  + análise 
+  + aprovada
+  + iniciado
+  + planejado
+  + em andamento
+  + encerrado
+  + cancelado
++ Se um projeto foi mudado o status para iniciado, em andamento ou encerrado não pode
+  mais ser excluído
++ O sistema não deve permitir o cadastro de um novo membro diretamente. Deve ser
+  provida funcionalidade via web service, contendo nome e atribuição (cargo)
++ O sistema deve permitir associar membros aos projetos que tem atribuição funcionário
 
 ---
 ### URLs
