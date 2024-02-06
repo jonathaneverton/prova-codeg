@@ -1,8 +1,10 @@
 package com.example.codeg.service;
 
 import com.example.codeg.model.Member;
+import com.example.codeg.model.Project;
 import com.example.codeg.repository.IMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,11 +16,14 @@ public class MemberService {
     @Autowired
     private IMemberRepository repository;
 
-    public List<Member> getAllMember() {
-        List<Member> memberList = new ArrayList<>();
-        repository.findAll().forEach(member -> memberList.add(member));
+    @Query("SELECT m FROM Member m JOIN FETCH m.projeto")
+    public List<Member> getAllMembers() {
+        return repository.findAll();
+    }
 
-        return memberList;
+    @Query("SELECT DISTINCT m FROM Member m JOIN FETCH m.projeto p WHERE p = :project")
+    public List<Member> getAllMembersByProject(Project project) {
+        return repository.findByProjeto(project);
     }
 
     public Member getMemberById(Long id) {
@@ -29,6 +34,10 @@ public class MemberService {
         Member updatedMember = repository.save(member);
 
         return repository.findById(updatedMember.getId()).isPresent();
+    }
+
+    public Member saveMember(Member member) {
+        return repository.save(member);
     }
 
     public boolean deleteMember(Long id) {
