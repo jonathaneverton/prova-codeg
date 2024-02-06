@@ -2,17 +2,17 @@ package com.example.codeg.controller;
 
 import com.example.codeg.enums.RiskClassification;
 import com.example.codeg.enums.StatusProject;
+import com.example.codeg.exceptions.CustomException;
 import com.example.codeg.model.Person;
 import com.example.codeg.model.Project;
 import com.example.codeg.service.PersonService;
 import com.example.codeg.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -77,13 +77,22 @@ public class ProjectController {
 
     @GetMapping("/deleteProject/{id}")
     public String deleteProject(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        if (service.deleteProject(id)) {
-            redirectAttributes.addFlashAttribute("message", "Delete Success");
-        } else {
+        try {
+            if (service.deleteProject(id)) {
+                redirectAttributes.addFlashAttribute("message", "Delete Success");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Delete Failure");
+            }
+        } catch (CustomException e) {
             redirectAttributes.addFlashAttribute("message", "Delete Failure");
         }
 
         return "redirect:/viewProjectList";
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleCustomException(CustomException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
 }
