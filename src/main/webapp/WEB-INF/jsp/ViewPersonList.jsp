@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>View  List</title>
+    <title>Lista de Pessoas</title>
 
     <link rel="stylesheet"
         	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
