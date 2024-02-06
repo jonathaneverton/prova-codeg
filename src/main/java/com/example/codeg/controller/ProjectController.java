@@ -2,7 +2,9 @@ package com.example.codeg.controller;
 
 import com.example.codeg.enums.RiskClassification;
 import com.example.codeg.enums.StatusProject;
+import com.example.codeg.model.Person;
 import com.example.codeg.model.Project;
+import com.example.codeg.service.PersonService;
 import com.example.codeg.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 public class ProjectController {
 
     @Autowired
     ProjectService service;
+
+    @Autowired
+    PersonService personService;
 
     @GetMapping({"/", "/viewProjectList"})
     public String viewProjectList(@ModelAttribute("message") String message, Model model) {
@@ -29,6 +36,7 @@ public class ProjectController {
 
     @GetMapping("/addProject")
     public String addProject(@ModelAttribute("message") String message, Model model) {
+        model.addAttribute("managers", personService.getAllGerente());
         model.addAttribute("project", new Project());
         model.addAttribute("message", message);
 
@@ -49,8 +57,9 @@ public class ProjectController {
     @GetMapping("/editProject/{id}")
     public String editProject(@PathVariable Long id, Model model) {
         model.addAttribute("project", service.getProjectById(id));
-        model.addAttribute("statusProject", StatusProject.values());
-        model.addAttribute("riskClassifications", RiskClassification.values());
+        model.addAttribute("managers", personService.getAllGerente());
+//        model.addAttribute("statusProject", StatusProject.values());
+//        model.addAttribute("riskClassifications", RiskClassification.values());
 
         return "project/EditProject";
     }

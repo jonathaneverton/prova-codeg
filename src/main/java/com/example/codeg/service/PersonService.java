@@ -21,6 +21,10 @@ public class PersonService {
         return personList;
     }
 
+    public List<Person> getAllGerente() {
+        return repository.findByGerenteIsTrue();
+    }
+
     public Person getPersonById(Long id) {
         return repository.findById(id).get();
     }

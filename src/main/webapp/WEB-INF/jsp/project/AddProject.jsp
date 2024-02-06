@@ -113,6 +113,18 @@
 
             <div class="row">
                 <div class="form-group col-md-12">
+                    <label class="col-md-3" for="gerente">Gerentes</label>
+                    <div class="col-md-6">
+                        <form:select path="gerente" class="form-control">
+                            <form:option value="" label="Selecione um gerente" />
+                            <form:options items="${managers}" itemLabel="nome" itemValue="id" />
+                        </form:select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
                     <label class="col-md-3" for="risco">Risco</label>
                     <div class="col-md-6">
                         <form:select path="riskClassification" id="riskClassification">

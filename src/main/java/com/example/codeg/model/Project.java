@@ -2,6 +2,7 @@ package com.example.codeg.model;
 
 import com.example.codeg.enums.RiskClassification;
 import com.example.codeg.enums.StatusProject;
+import org.hibernate.annotations.Columns;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -26,8 +27,10 @@ public class Project {
     private Double orcamento;
     private String risco;
 
+    @Transient
     private RiskClassification riskClassification;
 
+    @Transient
     private StatusProject statusProject;
 
     @ManyToOne
