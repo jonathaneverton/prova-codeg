@@ -1,5 +1,9 @@
 package com.example.codeg.model;
 
+import com.example.codeg.enums.RiskClassification;
+import com.example.codeg.enums.StatusProject;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -11,13 +15,20 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataInicio;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataPrevisaoFim;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataFim;
     private String descricao;
     private String status;
     private Double orcamento;
     private String risco;
+
+    private RiskClassification riskClassification;
+
+    private StatusProject statusProject;
 
     @ManyToOne
     @JoinColumn(name = "idgerente")
@@ -113,4 +124,21 @@ public class Project {
     public void setMembros(List<Member> membros) {
         this.membros = membros;
     }
+
+    public void setRiskClassification(RiskClassification riskClassification) {
+        this.risco = riskClassification.name();
+    }
+
+    public RiskClassification getRiskClassification() {
+        return riskClassification;
+    }
+
+    public void setStatusProject(StatusProject statusProject) {
+        this.status = statusProject.name();
+    }
+
+    public StatusProject getStatusProject() {
+        return statusProject;
+    }
+
 }

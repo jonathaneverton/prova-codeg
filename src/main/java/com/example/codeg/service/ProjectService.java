@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Project {
+public class ProjectService {
     @Autowired
     private IProjectRepository repository;
 
-    public List<com.example.codeg.model.Project> getAllPerson() {
+    public List<com.example.codeg.model.Project> getAllProject() {
         List<com.example.codeg.model.Project> projectList = new ArrayList<>();
         repository.findAll().forEach(project -> projectList.add(project));
 
