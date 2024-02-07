@@ -1,5 +1,6 @@
 package com.example.codeg.service;
 
+import com.example.codeg.dto.PersonDTO;
 import com.example.codeg.exceptions.CustomException;
 import com.example.codeg.model.Person;
 import com.example.codeg.repository.IPersonRepository;
@@ -16,6 +17,11 @@ public class PersonService {
 
     @Autowired
     private IPersonRepository repository;
+
+    @Autowired
+    public PersonService(IPersonRepository personRepository) {
+        this.repository = personRepository;
+    }
 
 //    public List<Person> getAllPerson() {
 //        List<Person> personList = new ArrayList<>();
@@ -45,6 +51,11 @@ public class PersonService {
         Person updatedPerson = repository.save(person);
 
         return repository.findById(updatedPerson.getId()).isPresent();
+    }
+
+    public Person createPerson(PersonDTO personDTO) {
+        Person person = new Person(personDTO);
+        return repository.save(person);
     }
 
     public boolean deletePerson(Long id) {

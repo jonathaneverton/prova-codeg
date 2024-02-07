@@ -1,5 +1,7 @@
 package com.example.codeg.model;
 
+import com.example.codeg.dto.PersonDTO;
+import com.example.codeg.dto.ProjectDTO;
 import com.example.codeg.enums.RiskClassification;
 import com.example.codeg.enums.StatusProject;
 import org.hibernate.annotations.Columns;
@@ -39,6 +41,21 @@ public class Project {
 
     @OneToMany(mappedBy = "projeto")
     private List<Member> membros;
+
+    public Project(ProjectDTO projectDTO) {
+        this.nome = projectDTO.nome();
+        this.dataInicio = projectDTO.datainicio();
+        this.dataPrevisaoFim = projectDTO.dataPrevisaoFim();
+        this.dataFim = projectDTO.dataFim();
+        this.descricao = projectDTO.descricao();
+        this.status = projectDTO.status();
+        this.orcamento = projectDTO.orcament();
+        this.risco = projectDTO.risco();
+    }
+
+    public Project() {
+
+    }
 
     public Long getId() {
         return id;

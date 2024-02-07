@@ -1,5 +1,6 @@
 package com.example.codeg.service;
 
+import com.example.codeg.dto.ProjectDTO;
 import com.example.codeg.exceptions.CustomException;
 import com.example.codeg.model.Person;
 import com.example.codeg.model.Project;
@@ -16,6 +17,9 @@ import java.util.List;
 public class ProjectService {
     @Autowired
     private IProjectRepository repository;
+
+    @Autowired
+    private PersonService personService;
 
 //    public List<com.example.codeg.model.Project> getAllProject() {
 //        List<com.example.codeg.model.Project> projectList = new ArrayList<>();
@@ -37,10 +41,22 @@ public class ProjectService {
         return repository.findById(id).get();
     }
 
-    public boolean saveOrUpdateProject(com.example.codeg.model.Project project) {
-        com.example.codeg.model.Project updatedProject = repository.save(project);
+    public boolean saveOrUpdateProject(Project project) {
+        Project updatedProject = repository.save(project);
 
         return repository.findById(updatedProject.getId()).isPresent();
+    }
+
+    public Project createProject(ProjectDTO projectDTO) {
+        // obter a entidade Person do banco de dados
+        Person createdPerson = personService.getPersonById(projectDTO.gerente());
+
+        // Associar o gerente ao projeto
+        Project project = new Project(projectDTO);
+        project.setGerente(createdPerson);
+
+        // Salvar o projeto no banco de dados
+        return repository.save(project);
     }
 
     public boolean deleteProject(Long id) {

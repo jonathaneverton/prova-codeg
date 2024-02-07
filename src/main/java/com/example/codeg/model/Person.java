@@ -36,6 +36,7 @@ public class Person {
         this.gerente = personDTO.gerente();
         this.funcionario = personDTO.funcionario();
     }
+
     public Long getId() {
         return id;
     }

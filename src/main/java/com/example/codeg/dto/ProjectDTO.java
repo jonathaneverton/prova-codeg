@@ -1,5 +1,7 @@
 package com.example.codeg.dto;
 
+import com.example.codeg.model.Person;
+
 import java.time.LocalDate;
 
 public record ProjectDTO(String nome,
@@ -9,5 +11,6 @@ public record ProjectDTO(String nome,
                          String descricao,
                          String status,
                          Double orcament,
-                         String risco) {
+                         String risco,
+                         Long gerente) {
 }
