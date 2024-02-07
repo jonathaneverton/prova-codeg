@@ -26,7 +26,7 @@ public class ProjectController {
     @Autowired
     PersonService personService;
 
-    @GetMapping({"/", "/viewProjectList"})
+    @GetMapping("/project/viewProjectList")
     public String viewProjectList(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("projectList", service.getAllProject());
         model.addAttribute("message", message);
@@ -34,7 +34,7 @@ public class ProjectController {
         return "project/ViewProjectList";
     }
 
-    @GetMapping("/addProject")
+    @GetMapping("/project/addProject")
     public String addProject(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("managers", personService.getAllGerente());
         model.addAttribute("project", new Project());
@@ -43,18 +43,18 @@ public class ProjectController {
         return "project/AddProject";
     }
 
-    @PostMapping("/saveProject")
+    @PostMapping("/project/saveProject")
     public String saveProject(Project project, RedirectAttributes redirectAttributes) {
         if (service.saveOrUpdateProject(project)) {
             redirectAttributes.addFlashAttribute("message", "Save Success");
-            return "redirect:/viewProjectList";
+            return "redirect:/project/viewProjectList";
         }
 
         redirectAttributes.addFlashAttribute("message", "Save Failure");
-        return "redirect:/addProject";
+        return "redirect:/project/addProject";
     }
 
-    @GetMapping("/editProject/{id}")
+    @GetMapping("/project/editProject/{id}")
     public String editProject(@PathVariable Long id, Model model) {
         model.addAttribute("project", service.getProjectById(id));
         model.addAttribute("managers", personService.getAllGerente());
@@ -64,18 +64,18 @@ public class ProjectController {
         return "project/EditProject";
     }
 
-    @PostMapping("/editSaveProject")
+    @PostMapping("/project/editSaveProject")
     public String editSaveProject(Project project, RedirectAttributes redirectAttributes) {
         if (service.saveOrUpdateProject(project)) {
             redirectAttributes.addFlashAttribute("message", "Edit Success");
-            return "redirect:/viewProjectList";
+            return "redirect:/project/viewProjectList";
         }
 
         redirectAttributes.addFlashAttribute("message", "Edit Failure");
-        return "redirect:/editProject/" + project.getId();
+        return "redirect:/project/editProject/" + project.getId();
     }
 
-    @GetMapping("/deleteProject/{id}")
+    @GetMapping("/project/deleteProject/{id}")
     public String deleteProject(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             if (service.deleteProject(id)) {
@@ -87,7 +87,7 @@ public class ProjectController {
             redirectAttributes.addFlashAttribute("message", "Delete Failure");
         }
 
-        return "redirect:/viewProjectList";
+        return "redirect:/project/viewProjectList";
     }
 
     @ExceptionHandler(CustomException.class)

@@ -37,7 +37,7 @@
 
         <h1 class="p-3">Editar Pessoa</h1>
 
-        <form:form action="/editSavePerson" method="post" modelAttribute="person">
+        <form:form action="/person/editSavePerson" method="post" modelAttribute="person">
 
                     <div class="row">
                     	<div class="form-group col-md-12">

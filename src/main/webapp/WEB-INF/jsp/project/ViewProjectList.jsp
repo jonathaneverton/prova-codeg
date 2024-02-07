@@ -68,12 +68,12 @@
 						<td>${project.risco}</td>
                 		<td>
 							<button type="button" class="btn btn-success">
-                		    	<a href="/editProject/${project.id}">Editar</a>
+                		    	<a href="/project/editProject/${project.id}">Editar</a>
                 			</button>
 						</td>
                 		<td>
 							<button type="button" class="btn btn-danger">
-                				<a href="/deleteProject/${project.id}">Apagar</a>
+                				<a href="/project/deleteProject/${project.id}">Apagar</a>
                 			</button>
 						</td>
                 	</tr>
@@ -84,11 +84,11 @@
         </form:form>
 
         <button type="button" class="btn btn-primary btn-block">
-        	<a href="/addProject">Adicionar</a>
+        	<a href="/project/addProject">Adicionar</a>
         </button>
 
 		<button type="button" class="btn btn-dark btn-block">
-			<a href="/index.jsp">Voltar</a>
+			<a href="/">Voltar</a>
 		</button>
 
     </div>

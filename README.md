@@ -98,21 +98,21 @@ $ git clone https://github.com/jonathaneverton/prova-codeg.git
 ### URLs
 ### Home
 ```
-http://localhost:8080/index.jsp
+http://localhost:8080/
 ```
 ### Pessoa
 ```
-- http://localhost:8080/viewPersonList
-- http://localhost:8080/addPerson
-- http://localhost:8080/editPerson/{idPessoa}
-- http://localhost:8080/deletePerson/{idPessoa}
+- http://localhost:8080/person/viewPersonList
+- http://localhost:8080/person/addPerson
+- http://localhost:8080/person/editPerson/{idPessoa}
+- http://localhost:8080/person/deletePerson/{idPessoa}
 ```
 ####  - Projeto
 ```
-- http://localhost:8080/viewProjectList
-- http://localhost:8080/addProject
-- http://localhost:8080/editProject/{idProject}
-- http://localhost:8080/deleteProject/{idProject}
+- http://localhost:8080/project/viewProjectList
+- http://localhost:8080/project/addProject
+- http://localhost:8080/project/editProject/{idProject}
+- http://localhost:8080/project/deleteProject/{idProject}
 ```
 ####  - Membros (WEB-SERVICE)
 ```

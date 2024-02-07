@@ -17,7 +17,7 @@ public class PersonController {
     @Autowired
     PersonService service;
 
-    @GetMapping({"/", "/viewPersonList"})
+    @GetMapping( "/person/viewPersonList")
     public String viewPersonList(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("personList", service.getAllPerson());
         model.addAttribute("message", message);
@@ -25,7 +25,7 @@ public class PersonController {
         return "person/ViewPersonList";
     }
 
-    @GetMapping("/addPerson")
+    @GetMapping("/person/addPerson")
     public String addPerson(@ModelAttribute("message") String message, Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("message", message);
@@ -33,36 +33,36 @@ public class PersonController {
         return "person/AddPerson";
     }
 
-    @PostMapping("/savePerson")
+    @PostMapping("/person/savePerson")
     public String savePerson(Person person, RedirectAttributes redirectAttributes) {
         if (service.saveOrUpdatePerson(person)) {
             redirectAttributes.addFlashAttribute("message", "Save Success");
-            return "redirect:/viewPersonList";
+            return "redirect:/person/viewPersonList";
         }
 
         redirectAttributes.addFlashAttribute("message", "Save Failure");
-        return "redirect:/addPerson";
+        return "redirect:/person/addPerson";
     }
 
-    @GetMapping("/editPerson/{id}")
+    @GetMapping("/person/editPerson/{id}")
     public String editPerson(@PathVariable Long id, Model model) {
         model.addAttribute("person", service.getPersonById(id));
 
         return "person/EditPerson";
     }
 
-    @PostMapping("/editSavePerson")
+    @PostMapping("/person/editSavePerson")
     public String editSavePerson(Person person, RedirectAttributes redirectAttributes) {
         if (service.saveOrUpdatePerson(person)) {
             redirectAttributes.addFlashAttribute("message", "Edit Success");
-            return "redirect:/viewPersonList";
+            return "redirect:/person/viewPersonList";
         }
 
         redirectAttributes.addFlashAttribute("message", "Edit Failure");
-        return "redirect:/editPerson/" + person.getId();
+        return "redirect:/person/editPerson/" + person.getId();
     }
 
-    @GetMapping("/deletePerson/{id}")
+    @GetMapping("/person/deletePerson/{id}")
     public String deletePerson(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             if(service.deletePerson(id)) {
@@ -75,7 +75,7 @@ public class PersonController {
         }
 
 
-        return "redirect:/viewPersonList";
+        return "redirect:/person/viewPersonList";
     }
 
     @ExceptionHandler(CustomException.class)

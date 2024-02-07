@@ -62,12 +62,12 @@
 						<td>${person.gerente}</td>
                 		<td>
 							<button type="button" class="btn btn-success">
-                		    	<a href="/editPerson/${person.id}">Editar</a>
+                		    	<a href="/person/editPerson/${person.id}">Editar</a>
                 			</button>
 						</td>
                 		<td>
 							<button type="button" class="btn btn-danger">
-                				<a href="/deletePerson/${person.id}">Apagar</a>
+                				<a href="/person/deletePerson/${person.id}">Apagar</a>
                 			</button>
 						</td>
                 	</tr>
@@ -78,11 +78,11 @@
         </form:form>
 
         <button type="button" class="btn btn-primary btn-block">
-        	<a href="/addPerson">Adicionar</a>
+        	<a href="/person/addPerson">Adicionar</a>
         </button>
 
 		<button type="button" class="btn btn-dark btn-block">
-			<a href="/index.jsp">Voltar</a>
+			<a href="/">Voltar</a>
 		</button>
 
     </div>

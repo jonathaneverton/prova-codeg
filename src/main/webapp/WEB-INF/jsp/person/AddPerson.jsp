@@ -37,7 +37,7 @@
 
         <h1 class="p-3"> Adicionar Pessoa </h1>
 
-        <form:form action="/savePerson" method="post" modelAttribute="person">
+        <form:form action="/person/savePerson" method="post" modelAttribute="person">
 
             <div class="row">
             	<div class="form-group col-md-12">

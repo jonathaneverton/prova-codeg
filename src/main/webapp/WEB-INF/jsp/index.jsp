@@ -42,11 +42,11 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/viewPersonList">Pessoas<span class="sr-only">(atual)</span></a>
+                <a class="nav-link" href="/person/viewPersonList">Pessoas<span class="sr-only">(atual)</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="/viewProjectList">Projetos<span class="sr-only">(atual)</span></a>
+                <a class="nav-link" href="/project/viewProjectList">Projetos<span class="sr-only">(atual)</span></a>
             </li>
         </ul>
     </div>

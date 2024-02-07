@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Adicionar Pessoa</title>
+    <title>Adicionar Projeto</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -42,7 +42,7 @@
 
         <h1 class="p-3"> Adicionar Projeto </h1>
 
-        <form:form action="/saveProject" method="post" modelAttribute="project">
+        <form:form action="/project/saveProject" method="post" modelAttribute="project">
 
             <div class="row">
                 <div class="form-group col-md-12">
@@ -193,8 +193,6 @@
                     }
     	    }
         </script>
-
-
 
 </body>
 

@@ -41,7 +41,7 @@
 
         <h1 class="p-3">Editar Projeto</h1>
 
-        <form:form action="/editSaveProject" method="post" modelAttribute="project">
+        <form:form action="/project/editSaveProject" method="post" modelAttribute="project">
 
                     <div class="row">
                     	<div class="form-group col-md-12">
