@@ -4,6 +4,7 @@
 
 # Índice
 * [Descritivo](#Descritivo)
+* [Tecnologias](#Tecnologias)
 * [Configurações](#Configurações)
 * [Funcionalidades](#Funcionalidades)
 * [Regras de Negócio](#Regras-de-Negócio)
@@ -100,21 +101,21 @@ $ git clone https://github.com/jonathaneverton/prova-codeg.git
 ```
 http://localhost:8080/
 ```
-### Pessoa
+#### Pessoa
 ```
 - http://localhost:8080/person/viewPersonList
 - http://localhost:8080/person/addPerson
 - http://localhost:8080/person/editPerson/{idPessoa}
 - http://localhost:8080/person/deletePerson/{idPessoa}
 ```
-####  - Projeto
+#### Projeto
 ```
 - http://localhost:8080/project/viewProjectList
 - http://localhost:8080/project/addProject
 - http://localhost:8080/project/editProject/{idProject}
 - http://localhost:8080/project/deleteProject/{idProject}
 ```
-####  - Membros (WEB-SERVICE)
+#### Membros (WEB-SERVICE)
 ```
 - http://localhost:8080/api/member
 - http://localhost:8080/addProject
