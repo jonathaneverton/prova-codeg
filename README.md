@@ -121,9 +121,12 @@ http://localhost:8080/
 
 Json:
 {
-"id": 1,
-"projeto": 5,
-"pessoa": 1
+  "projeto": {
+    "id": 5
+  },
+  "pessoa": {
+    "id": 1
+  }
 }
 
 - http://localhost:8080/api/member (GET)
