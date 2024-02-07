@@ -117,10 +117,17 @@ http://localhost:8080/
 ```
 #### Membros (WEB-SERVICE)
 ```
-- http://localhost:8080/api/member
-- http://localhost:8080/addProject
-- http://localhost:8080/editProject/{idProject}
-- http://localhost:8080/deleteProject/{idProject}
+- http://localhost:8080/api/member (POST)
+
+Json:
+{
+"id": 1,
+"projeto": 5,
+"pessoa": 1
+}
+
+- http://localhost:8080/api/member (GET)
+- http://localhost:8080/api/{idProjeto}/members (GET)
 ```
 
 ---
